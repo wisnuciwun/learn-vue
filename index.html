@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials Point - Vue JS</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+    <h1>Lets cooking with vue guys</h1>
+    <span id="element1">
+        I have an idea to create any vue app<br />
+        you will see something element that not written in html code :
+        <!-- can you see text above on browser when template is exist in app.js ? -->
+        <p><b>{{ title }}</b></p>
+        {{ author }}<br />
+        {{ duration }}<br />
+        <p>
+            <button v-on:click="playlist = title">+ Add to playlist</button>
+            <!-- or you can use v-on alternate -->
+            <button @click="playlist = '' ">- Remove from playlist</button><br /><br />
+            <button @click="changeTitle">Move to another cooking tutorial</button>
+            <button @click="selfTitle('How to make Lemon Juice', 'Wisnu', '5 min')">Add yourself tutorial ! *new
+                feature</button>
+        </p>
+        <span>
+            <button v-if="!showPlaylist" @click="toggleShowPlaylist">Show playlist</button>
+            <!-- you can use it too : -->
+            <!-- <button v-else="showPlaylist" @click="toggleShowPlaylist">Hide playlist</button> -->
+            <button v-if="showPlaylist" @click="toggleShowPlaylist">Hide playlist</button>
+        </span>
+        <!-- this is fastest because it just hidden by css not from the dom : -->
+        <p v-show="showPlaylist">...playlist loading</p>
+        <p v-if="showPlaylist">
+            Playlist : <br/>
+            {{ playlist }}
+        </p>
+        
+    </span>
+    <br />
+    {{ duration }}
+    <!-- you cannot use outside the id, right -->
+    <script src="app.js"></script>
+</body>
+
+</html>
