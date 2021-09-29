@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorials Point - Vue JS</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .mouse-ctrl{
+            width: 80px;
+            height: 50px;
+            background-color: bisque;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 9pt;
+        }
+
+        .creators{
+            background-color:paleturquoise;
+            list-style: none;
+            border: orangered;
+            border-width: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,12 +54,33 @@
             Playlist : <br/>
             {{ playlist }}
         </p>
+        <br/>
+        <br/>
+
+        <div class="mouse-ctrl" @mouseover="handleMouseEvent($event, 'you are using mouseover')"><b>mouse hover (on focus)</b></div>
+        <div class="mouse-ctrl" @mouseleave="handleMouseEvent"><b>double click</b></div>
+        <div class="mouse-ctrl" @dblclick="handleMouseEvent"><b>mouse leave (on blur)</b></div>
+        <div class="mouse-ctrl" @mousemove="handleMouseMove"><b>mouse move {{x}} {{y}}</b></div>
         
+        <div>
+            Some videos you might interest :
+            <ul>
+                <li v-for="item in anotherPlaylist">{{item.title}} - {{item.author}}</li>
+            </ul>
+        </div>
+        <!-- how to use bind : -->
+        <a v-bind:href="myurl" >Find on Google !</a>
+        <li @click="toggleCreatorMode(item)" v-for="item in filteredPlaylist" :class="{creators: item.creatorMode}" >
+            <p >{{item.name}}</p>
+            <img :src="item.img" style="width: 100px; height: auto;" alt="">
+        </li>
     </span>
+    <br />
     <br />
     {{ duration }}
     <!-- you cannot use outside the id, right -->
     <script src="app.js"></script>
+    
 </body>
 
 </html>

@@ -5,10 +5,36 @@ const app = Vue.createApp({
     data() { //must type data() not our own function name
         return {
             title : 'How to cook Noodle',
+            myurl : 'http://google.com',
             author : 'Kimmy',
             duration : '2 min',
             playlist : '',
-            showPlaylist : false
+            showPlaylist : false,
+            x : 0,
+            y : 0,
+            anotherPlaylist : [
+                {
+                    title : 'Lets make a Soto',
+                    author : 'Anderson',
+                    creatorMode : true
+                },
+                {
+                    title : 'How fry Tempe so crispy',
+                    author : 'Kimmy',
+                    creatorMode : true
+                },
+                {
+                    title : 'Lets make some fried rice',
+                    author : 'Ruby',
+                }
+            ],
+            images: [
+                {name: 'Rachmat', img: 'assets/2.jpeg', creatorMode : false},
+
+                {name: 'Jennie', img: "assets/1.jpg", creatorMode : true},
+
+                {name: 'Ubay', img: "assets/1.jpg", creatorMode : true}
+            ]
         }
     },
     methods : {
@@ -29,6 +55,24 @@ const app = Vue.createApp({
         toggleShowPlaylist(){
             this.showPlaylist = !this.showPlaylist
             // reminder : var++ is increase val 
+        },
+
+        handleMouseEvent(e, data = ''){
+            console.log("hi it works !", e, data)
+        },
+
+        handleMouseMove(e){
+            this.x = e.offsetX
+            this.y = e.offsetY
+        },
+
+        toggleCreatorMode(value){
+            value.creatorMode = !value.creatorMode
+        }
+    },
+    computed: {
+        filteredPlaylist(){
+            return this.images.filter(x => x.creatorMode == true)
         }
     }
 }) //vue library
