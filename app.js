@@ -29,11 +29,11 @@ const app = Vue.createApp({
                 }
             ],
             images: [
-                {name: 'Rachmat', img: 'assets/2.jpeg', creatorMode : false},
+                {name: 'Rachmat', img: 'assets/2.png', creatorMode : false},
 
-                {name: 'Jennie', img: "assets/1.jpg", creatorMode : true},
+                {name: 'Jennie', img: "assets/1.png", creatorMode : true},
 
-                {name: 'Ubay', img: "assets/1.jpg", creatorMode : true}
+                {name: 'Ubay', img: "assets/1.png", creatorMode : true}
             ]
         }
     },
