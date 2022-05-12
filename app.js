@@ -10,6 +10,7 @@ const app = Vue.createApp({
             duration : '2 min',
             playlist : '',
             showPlaylist : false,
+            showCreator: true,
             x : 0,
             y : 0,
             anotherPlaylist : [
@@ -26,6 +27,7 @@ const app = Vue.createApp({
                 {
                     title : 'Lets make some fried rice',
                     author : 'Ruby',
+                    creatorMode: true
                 }
             ],
             images: [
@@ -68,11 +70,20 @@ const app = Vue.createApp({
 
         toggleCreatorMode(value){
             value.creatorMode = !value.creatorMode
-        }
+        },
+
+        toggleCreatorList(){
+            this.showCreator = !this.showCreator
+        },
     },
     computed: {
+        // computed properties (like didmount in react)
         filteredPlaylist(){
-            return this.images.filter(x => x.creatorMode == true)
+            if(this.showCreator == true){
+                return this.images
+            }else{
+                return this.images.filter(x => x.creatorMode == false)
+            }
         }
     }
 }) //vue library

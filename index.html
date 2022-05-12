@@ -68,8 +68,11 @@
                 <li v-for="item in anotherPlaylist">{{item.title}} - {{item.author}}</li>
             </ul>
         </div>
-        <!-- how to use bind : -->
+        <!-- how to use bind (v-bind or just "" : " mark) : -->
         <a v-bind:href="myurl" >Find on Google !</a>
+        <br>
+        <br>
+        <button @click="toggleCreatorList()" >Hide Creators</button>
         <li @click="toggleCreatorMode(item)" v-for="item in filteredPlaylist" :class="{creators: item.creatorMode}" >
             <p >{{item.name}}</p>
             <img :src="item.img" style="width: 100px; height: auto;" alt="">
